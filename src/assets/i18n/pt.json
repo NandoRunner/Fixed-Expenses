@@ -1,0 +1,25 @@
+{
+  "save": "Salvar",
+  "date": "Data",
+  "no-list": "Sem itens cadastrados...",
+  "chart": {
+    "select": "Selecione o Tipo de Gráfico",
+    "bar": "Barra",
+    "pie": "Pizza"
+  },
+  "power": {
+    "title": "Consumo de Energia",
+    "menu": "Energia",
+    "new": "Novo consumo de Energia",
+    "edit": "Editar consumo de Energia"
+  },
+  "login": {
+    "name": "Nome",
+    "password": "Senha",
+    "login": "ENTRAR",
+    "signup": "Registrar",
+    "exists": "Já possuo uma conta",
+    "new": "Criar conta",
+    "facebook": "Entrar com o Facebook"
+  }
+}

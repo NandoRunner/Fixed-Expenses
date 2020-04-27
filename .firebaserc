@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "expense-register-17e66"
+  },
+  "targets": {
+    "expense-register-17e66": {
+      "hosting": {
+        "fe-web": [
+          "fixed-expenses"
+        ]
+      }
+    }
+  }
+}

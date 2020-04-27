@@ -1,7 +1,10 @@
 {
-  "name": "Home-Expenses",
+  "name": "fixed-expenses",
   "integrations": {
     "capacitor": {}
+  },
+  "hooks": {
+    "build:before": "./build-before.js"
   },
   "type": "angular"
 }

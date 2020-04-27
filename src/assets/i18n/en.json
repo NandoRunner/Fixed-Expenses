@@ -1,0 +1,20 @@
+{
+  "save": "Save",
+  "no-list": "No List yet...",
+  "date": "Date",
+  "chart": {
+    "select": "Select Chart Type",
+    "bar": "Bar",
+    "pie": "Pie"
+  },
+  "power": { "title": "Power Expenditure", "menu": "Power", "new": "New", "edit": "Edit" },
+  "login": {
+    "name": "Name",
+    "password": "Senha",
+    "login": "ENTER",
+    "signup": "Sign Up",
+    "exists": "Already have an account",
+    "new": "Create account",
+    "facebook": "Login with Facebook"
+  }
+}

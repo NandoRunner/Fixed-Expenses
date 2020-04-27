@@ -1,6 +1,6 @@
 {
-  "appId": "io.ionic.starter",
-  "appName": "Home-Expenses",
+  "appId": "com.fandradetecinfo.fixedexpenses",
+  "appName": "Fixed-Expenses",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
