@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Firestore } from 'src/app/core/classes/firestore.class';
 import { BaseModel } from '../models/base.model';
+import { FixedType } from '../models/type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,8 @@ import { BaseModel } from '../models/base.model';
 export class BaseService extends Firestore<BaseModel> {
   serviceName: string;
   collectionName: string;
-  filterName: string;
-  filterValue: string;
-
+  type: string;
+  
   constructor(private authService: AuthService, db: AngularFirestore) {
     super(db);
   }
@@ -21,7 +21,7 @@ export class BaseService extends Firestore<BaseModel> {
     this.authService.authState$.subscribe(user => {
       if (user) {
         this.setCollection(`/users/${user.uid}/${this.collectionName}`, ref =>
-          ref.orderBy('date', 'desc')
+          ref.where('type', "==", this.type).orderBy('issueDate', 'desc')
         );
         return;
       }

@@ -14,20 +14,21 @@
       <ion-icon name="settings" slot="start" color="primary"></ion-icon>
       <ion-input
         type="number"
-        placeholder="Medição da light"
+        placeholder="Consumo"
         autofocus="true"
         inputmode="decimal"
-        formControlName="value"
+        formControlName="consumption"
       >
       </ion-input>
     </ion-item>
     <ion-item>
+      <ion-icon name="cash-outline" slot="start" color="primary"></ion-icon>
       <ion-input
         type="number"
         placeholder="Valor"
         autofocus="true"
         inputmode="decimal"
-        formControlName="cost"
+        formControlName="value"
       >
       </ion-input>
     </ion-item>
@@ -36,9 +37,9 @@
       <ion-icon name="calendar" slot="start" color="primary"></ion-icon>
       <ion-datetime
         (ionChange)="changeDate($event.detail.value)"
-        displayFormat="DD/MM/YYYY"
+        displayFormat="MM/YYYY"
         value="{{myDate}}"
-        formControlName="date"
+        formControlName="issueDate"
       ></ion-datetime>
     </ion-item>
     <ion-button expand="full" type="submit" [disabled]="formGroup.invalid">
