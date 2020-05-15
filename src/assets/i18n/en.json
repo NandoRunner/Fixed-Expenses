@@ -1,11 +1,15 @@
 {
   "save": "Save",
+  "page": {
+    "saving": "Saving...",
+    "errorSaving": "Error saving "
+  },
   "no-list": "No List yet...",
   "date": "Date",
   "chart": {
     "select": "Select Chart Type",
-    "bar": "Bar",
-    "pie": "Pie"
+    "bar": { "name": "Bar", "title": "", "subTitle": "Bar Chart" },
+    "pie": { "name": "Pie", "title": "", "subTitle": "Pie Chart" }
   },
   "power": { "title": "Power Expenditure", "menu": "Power", "new": "New", "edit": "Edit" },
   "login": {
@@ -15,6 +19,9 @@
     "signup": "Sign Up",
     "exists": "Already have an account",
     "new": "Create account",
-    "facebook": "Login with Facebook"
+    "facebook": "Login with Facebook", 
+    "logout": "Do you really want to quit?",
+    "yes": "Yes",
+    "no": "no"
   }
 }

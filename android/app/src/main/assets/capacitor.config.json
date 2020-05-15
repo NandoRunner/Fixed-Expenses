@@ -1,0 +1,8 @@
+{
+  "appId": "com.fandradetecinfo.fixedexpenses",
+  "appName": "Fixed-Expenses",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

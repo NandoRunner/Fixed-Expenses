@@ -1,11 +1,15 @@
 {
   "save": "Salvar",
-  "date": "Mês Referência",
+  "page": {
+    "saving": "Salvando...",
+    "errorSaving": "Erro salvando "
+  },
+  "date": "Data",
   "no-list": "Sem itens cadastrados...",
   "chart": {
     "select": "Selecione o Tipo de Gráfico",
-    "bar": "Barra",
-    "pie": "Pizza"
+    "bar": { "name": "Barra", "title": "", "subTitle": "Gráfico Barra" },
+    "pie": { "name": "Pizza", "title": "", "subTitle": "Gráfico Pizza" }
   },
   "power": {
     "title": "Consumo de Energia",
@@ -20,6 +24,9 @@
     "signup": "Registrar",
     "exists": "Já possuo uma conta",
     "new": "Criar conta",
-    "facebook": "Entrar com o Facebook"
+    "facebook": "Entrar com o Facebook",
+    "logout": "Deseja realmente sair?",
+    "yes": "Sim",
+    "no": "Não"
   }
 }
