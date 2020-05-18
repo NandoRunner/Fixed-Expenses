@@ -12,6 +12,8 @@
     "pie": { "name": "Pie", "title": "", "subTitle": "Pie Chart" }
   },
   "power": { "title": "Power Expenditure", "menu": "Power", "new": "New", "edit": "Edit" },
+  "water": { "title": "Water Expenditure", "menu": "Water", "new": "New", "edit": "Edit" },
+  "gas": { "title": "Gas Expenditure", "menu": "Gas", "new": "New", "edit": "Edit" },
   "login": {
     "name": "Name",
     "password": "Senha",

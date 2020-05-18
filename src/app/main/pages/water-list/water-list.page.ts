@@ -2,25 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { OverlayService } from 'src/app/core/services/overlay.service';
 import { BaseListPage } from '../base-list.page';
-import { PowerService } from '../../services/power.service';
+import { WaterService } from '../../services/water.service';
 
 @Component({
-  selector: 'app-power-list',
-  templateUrl: './power-list.page.html',
-  styleUrls: ['./power-list.page.scss'],
+  selector: 'app-water-list',
+  templateUrl: './water-list.page.html',
+  styleUrls: ['./water-list.page.scss'],
 })
-
-export class PowerListPage extends BaseListPage {
+export class WaterListPage extends BaseListPage {
 
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    protected service: PowerService
+    protected service: WaterService
   ) {
     super(navCtrl, overlayService, service);
 
-    this.title = "Power";
-    this.route = "power";
+    this.title = "Water";
+    this.route = "water";
   }
  
 }

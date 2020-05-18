@@ -27,9 +27,9 @@ export class AppComponent {
 
   initializeApp() {
     this.pages = [
-//      { url: '/gas', direction: 'back', icon: 'checkmark', text: 'gas.menu' },
-      { url: '/power', direction: 'back', icon: 'checkmark', text: 'power.menu' }
-//      ,{ url: '/water', direction: 'back', icon: 'checkmark', text: 'water.menu' },
+      { url: '/gas', direction: 'back', icon: 'checkmark', text: 'gas.menu' },
+      { url: '/power', direction: 'back', icon: 'checkmark', text: 'power.menu' },
+      { url: '/water', direction: 'back', icon: 'checkmark', text: 'water.menu' },
     ];
 
     this.authService.authState$.subscribe(user => (this.user = user));

@@ -17,6 +17,18 @@
     "new": "Novo consumo de Energia",
     "edit": "Editar consumo de Energia"
   },
+  "water": {
+    "title": "Consumo de Água",
+    "menu": "Água",
+    "new": "Novo consumo de Água",
+    "edit": "Editar consumo de Água"
+  },
+  "gas": {
+    "title": "Consumo de Gás Natural",
+    "menu": "Gás Natural",
+    "new": "Novo consumo de Gás Natural",
+    "edit": "Editar consumo de Gás Natural"
+  },
   "login": {
     "name": "Nome",
     "password": "Senha",

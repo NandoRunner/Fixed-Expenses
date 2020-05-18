@@ -1,42 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { take } from 'rxjs/operators';
-
 import { OverlayService } from 'src/app/core/services/overlay.service';
-import { PowerService } from '../services/power.service';
+import { PageModel } from '../models/page.model';
+import { BaseService } from '../services/base.service';
 
 export class BaseSavePage implements OnInit {
 
-  formGroup: FormGroup;
   myDate: Date = new Date();
   pageTitle = '...';
-  listId: string = undefined;
+  formGroup: FormGroup;
+  protected page: PageModel = new PageModel();
+  private baseId: string = undefined;
+  protected type: string; 
 
   constructor(
     protected fb: FormBuilder,
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    protected route: ActivatedRoute,
-    protected service: PowerService
-  ) {}
+    protected service: BaseService
+  ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
-  init(): void {
-    const listId = this.route.snapshot.paramMap.get('id');
-    if (!listId) {
-      this.pageTitle = 'power.new';
+  protected init(itemId: any): void {
+
+    if (!itemId) {
+      this.pageTitle = this.page.titleNew;
       return;
     }
-    this.listId = listId;
-    this.pageTitle = 'power.edit';
+    this.baseId = itemId;
+    this.pageTitle = this.page.titleEdit;
     this.service
-      .get(listId)
+      .get(itemId)
       .pipe(take(1))
       .subscribe(({ issueDate, consumption, value, type }) => {
+        this.formGroup.get('id').setValue(itemId);
         this.formGroup.get('issueDate').setValue(issueDate.toDate().toISOString());
         this.formGroup.get('consumption').setValue(consumption);
         this.formGroup.get('value').setValue(value);
@@ -50,7 +50,7 @@ export class BaseSavePage implements OnInit {
       issueDate: ['', [Validators.required]],
       consumption: ['', [Validators.required, Validators.min(1), Validators.max(1000)]],
       value: ['', [Validators.required, Validators.min(1), Validators.max(1000)]],
-      type: ['1']
+      type: [this.type]
     });
   }
 
@@ -58,19 +58,19 @@ export class BaseSavePage implements OnInit {
     this.formGroup.get('issueDate').setValue(this.myDate);
 
     const loading = await this.overlayService.loading({
-      message: 'Saving...'
+      message: this.page.saving
     });
     try {
-      const list = !this.listId
+      const list = !this.baseId
         ? await this.service.create(this.formGroup.value)
         : await this.service.update({
-            id: this.listId,
-            ...this.formGroup.value
-          });
+          id: this.baseId,
+          ...this.formGroup.value
+        });
       this.service.deleteFieldId(list.id);
-      this.navCtrl.navigateBack('/power');
+      this.navCtrl.navigateBack(this.page.navBack);
     } catch (error) {
-      console.log('Error saving power: ', error);
+      console.log(this.page.error, error);
       await this.overlayService.toast({
         message: error.message
       });

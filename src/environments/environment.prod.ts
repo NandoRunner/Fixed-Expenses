@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   CURRENT_VERSION: "0.20.1",
   icon: "cash",
-  init_page: "power",
+  init_page: "gas",
   firebase: {
     apiKey: 'AIzaSyB8YElMeuS6OUJId8uLUgiOZ71XnMNRqMo',
     authDomain: 'expense-register-17e66.firebaseapp.com',
