@@ -7,7 +7,7 @@ import { WaterService } from '../../services/water.service';
 @Component({
   selector: 'app-water-list',
   templateUrl: './water-list.page.html',
-  styleUrls: ['./water-list.page.scss'],
+  styleUrls: ['../water.page.scss']
 })
 export class WaterListPage extends BaseListPage {
 

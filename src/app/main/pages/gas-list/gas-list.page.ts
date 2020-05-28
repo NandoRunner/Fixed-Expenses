@@ -7,7 +7,7 @@ import { GasService } from '../../services/gas.service';
 @Component({
   selector: 'app-gas-list',
   templateUrl: './gas-list.page.html',
-  styleUrls: ['./gas-list.page.scss'],
+  styleUrls: ['../gas.page.scss'],
 })
 export class GasListPage extends BaseListPage {
 

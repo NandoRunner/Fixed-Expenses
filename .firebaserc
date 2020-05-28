@@ -5,7 +5,7 @@
   "targets": {
     "expense-register-17e66": {
       "hosting": {
-        "fe-web": [
+        "fixed-expenses": [
           "fixed-expenses"
         ]
       }

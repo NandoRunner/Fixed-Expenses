@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  CURRENT_VERSION: "0.20.1",
+  CURRENT_VERSION: "0.20.4",
+  hostingName: "Fixed Expenses",
   icon: "cash",
   init_page: "gas",
   firebase: {

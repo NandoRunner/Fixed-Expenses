@@ -9,7 +9,7 @@ import { BaseSavePage } from '../base-save.page';
 @Component({
   selector: 'app-water-save',
   templateUrl: './water-save.page.html',
-  styleUrls: ['./water-save.page.scss'],
+  styleUrls: ['../water.page.scss'],
 })
 export class WaterSavePage extends BaseSavePage {
 

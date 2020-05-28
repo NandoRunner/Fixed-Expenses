@@ -9,7 +9,7 @@ import { BaseSavePage } from '../base-save.page';
 @Component({
   selector: 'app-gas-save',
   templateUrl: './gas-save.page.html',
-  styleUrls: ['./gas-save.page.scss'],
+  styleUrls: ['../gas.page.scss'],
 })
 export class GasSavePage extends BaseSavePage {
 
