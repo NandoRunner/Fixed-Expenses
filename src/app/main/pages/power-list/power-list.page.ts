@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { OverlayService } from 'src/app/core/services/overlay.service';
 import { BaseListPage } from '../base-list.page';
 import { PowerService } from '../../services/power.service';
+import { Power } from '../../models/power.model';
 
 @Component({
   selector: 'app-power-list',
@@ -10,17 +11,14 @@ import { PowerService } from '../../services/power.service';
   styleUrls: ['./power-list.page.scss'],
 })
 
-export class PowerListPage extends BaseListPage {
+export class PowerListPage extends BaseListPage<Power> {
 
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
     protected service: PowerService
   ) {
-    super(navCtrl, overlayService, service);
-
-    this.title = "Power";
-    this.route = "power";
+    super(navCtrl, overlayService, service, "power");
   }
  
 }
