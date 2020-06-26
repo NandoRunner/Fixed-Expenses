@@ -8,7 +8,7 @@ import { Power } from '../../models/power.model';
 @Component({
   selector: 'app-power-list',
   templateUrl: './power-list.page.html',
-  styleUrls: ['./power-list.page.scss'],
+  styleUrls: ['../orange.page.scss'],
 })
 
 export class PowerListPage extends BaseListPage<Power> {

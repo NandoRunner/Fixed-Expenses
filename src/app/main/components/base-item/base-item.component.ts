@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
+
 import { BaseModel } from '../../models/base.model';
-import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-base-item',
@@ -9,10 +9,9 @@ import { Platform } from '@ionic/angular';
 })
 export class BaseItemComponent {
 
-  @Input() item: BaseModel;
-  @Input() color: string;
+  @Input() item: any;
+  @Input() values: number;
   @Output() update = new EventEmitter<BaseModel>();
   @Output() delete = new EventEmitter<BaseModel>();
 
-  constructor(public platform: Platform) {}
 }

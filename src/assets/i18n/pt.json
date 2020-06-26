@@ -8,8 +8,8 @@
   "no-list": "Sem itens cadastrados...",
   "chart": {
     "select": "Selecione o Tipo de Gráfico",
-    "bar": { "name": "Barra", "title": "", "subTitle": "Gráfico Barra" },
-    "pie": { "name": "Pizza", "title": "", "subTitle": "Gráfico Pizza" }
+    "bar": { "name": "Valor (Barra)", "name2": "Consumo (Barra)", "title": "", "subTitle": "Últimas 12 medições" },
+    "pie": { "name": "Valor (Pizza)", "name2": "Consumo (Pizza)", "title": "", "subTitle": "Número de medições por grupo" }
   },
   "power": {
     "title": "Consumo de Energia",

@@ -11,7 +11,7 @@ import { Power } from '../../models/power.model';
 @Component({
   selector: 'app-power-save',
   templateUrl: './power-save.page.html',
-  styleUrls: ['./power-save.page.scss'],
+  styleUrls: ['../orange.page.scss']
 })
 export class PowerSavePage extends BaseSavePage<Power> {
 

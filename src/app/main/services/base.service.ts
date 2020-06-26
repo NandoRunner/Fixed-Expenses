@@ -20,8 +20,8 @@ export class BaseService extends Firestore<BaseModel> {
   protected init(): void {
     this.authService.authState$.subscribe(user => {
       if (user) {
-        console.log(`Colllection: /users/${user.uid}/${this.collectionName}`);  
-        console.log(`type: ${this.type}`);
+        //console.log(`Colllection: /users/${user.uid}/${this.collectionName}`);  
+        //console.log(`type: ${this.type}`);
         this.setCollection(`/users/${user.uid}/${this.collectionName}`, ref =>
           ref.where('type', "==", this.type).orderBy('issueDate', 'desc')
         );

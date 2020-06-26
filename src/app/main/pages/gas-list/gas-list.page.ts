@@ -8,7 +8,7 @@ import { Gas } from '../../models/gas.model';
 @Component({
   selector: 'app-gas-list',
   templateUrl: './gas-list.page.html',
-  styleUrls: ['../orange.page.scss'],
+  styleUrls: ['../green.page.scss'],
 })
 export class GasListPage extends BaseListPage<Gas> {
 
@@ -19,5 +19,5 @@ export class GasListPage extends BaseListPage<Gas> {
   ) {
     super(navCtrl, overlayService, service, "gas");
   }
- 
+
 }

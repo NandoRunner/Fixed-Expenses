@@ -12,7 +12,7 @@ import { Water } from '../../models/water.model';
 @Component({
   selector: 'app-water-save',
   templateUrl: './water-save.page.html',
-  styleUrls: ['../green.page.scss'],
+  styleUrls: ['../blue.page.scss'],
 })
 export class WaterSavePage extends BaseSavePage<Water> {
 

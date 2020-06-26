@@ -11,7 +11,7 @@ import { Gas } from '../../models/gas.model';
 @Component({
   selector: 'app-gas-save',
   templateUrl: './gas-save.page.html',
-  styleUrls: ['../orange.page.scss'],
+  styleUrls: ['../green.page.scss'],
 })
 export class GasSavePage extends BaseSavePage<Gas> {
 

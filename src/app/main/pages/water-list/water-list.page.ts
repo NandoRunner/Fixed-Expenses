@@ -8,7 +8,7 @@ import { Water } from '../../models/water.model';
 @Component({
   selector: 'app-water-list',
   templateUrl: './water-list.page.html',
-  styleUrls: ['../green.page.scss']
+  styleUrls: ['../blue.page.scss']
 })
 export class WaterListPage extends BaseListPage<Water> {
 

@@ -1,10 +1,5 @@
-<ion-header>
-  <ion-toolbar>
-    <app-menu-toggle slot="start" menu="main-menu"></app-menu-toggle>
-    <ion-title>{{ "water.title" | translate }} </ion-title>
-    <app-logout-button slot="end" menu="main-menu"></app-logout-button>
-  </ion-toolbar>
-</ion-header>
+<app-base-header [title]="'water.title'" [isSave]=false [cssName]="'blue'">
+</app-base-header>
 
 <ion-content class="ion-padding">
   <ion-list *ngIf="list$ | async as list">
@@ -13,16 +8,16 @@
       <ion-label>Consumo</ion-label>
       <ion-label>Valor</ion-label>
     </ion-item>
-    <ng-container *ngIf="list.length > 0; else noTasks">
-      <app-base-item 
-        *ngFor="let item of list; let i = index;"
+    <ng-container *ngIf="list.length > 0; else noItems">
+      <app-base-item
+        *ngFor="let item of list"
         [item]="item"
-        [color]="(i % 2 == 0) ? 'light' : 'light2'"
+        [values]="2"
         (update)="onUpdate($event)"
         (delete)="onDelete($event)"
       ></app-base-item>
     </ng-container>
-    <ng-template #noTasks>
+    <ng-template #noItems>
       <ion-item lines="none">{{ "no-list" | translate }}</ion-item>
     </ng-template>
   </ion-list>

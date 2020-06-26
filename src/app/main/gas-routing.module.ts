@@ -7,10 +7,10 @@ const routes: Routes = [
     path: '',
     canActivateChild: [AuthGuard],
     children: [
-      /*{
+      {
         path: 'chart',
         loadChildren: './pages/gas-chart/gas-chart.module#GasChartPageModule'
-      },*/
+      },
       {
         path: 'create',
         loadChildren: './pages/gas-save/gas-save.module#GasSavePageModule'
