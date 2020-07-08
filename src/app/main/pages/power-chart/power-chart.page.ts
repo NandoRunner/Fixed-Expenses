@@ -7,21 +7,21 @@ import { OverlayService } from 'src/app/core/services/overlay.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { BaseChartPage } from 'src/app/core/pages/base-chart';
 
-import { GasService } from '../../services/gas.service';
+import { PowerService } from '../../services/power.service';
 import { ProjectType } from 'src/app/core/models/projectType.enum';
 
 @Component({
-  selector: 'app-gas-chart',
-  templateUrl: './gas-chart.page.html',
-  styleUrls: ['../green.page.scss']
+  selector: 'app-power-chart',
+  templateUrl: './power-chart.page.html',
+  styleUrls: ['../orange.page.scss']
 })
-export class GasChartPage extends BaseChartPage {
+export class PowerChartPage extends BaseChartPage {
 
   constructor(
     private navCtrl: NavController,
     private overlayService: OverlayService,
     private authService: AuthService,
-    private service: GasService
+    private service: PowerService
   ) {
     super();
     this.lists$ = new Observable<MyChart[]>();

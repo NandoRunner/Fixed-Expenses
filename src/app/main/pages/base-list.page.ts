@@ -7,6 +7,7 @@ import { OverlayService } from 'src/app/core/services/overlay.service';
 import { formatDate } from '@angular/common';
 import { BaseService } from '../services/base.service';
 import { BaseModel } from '../models/base.model';
+import { CompareModel } from '../models/compare.model';
 
 export class BaseListPage<T> {
 
@@ -30,6 +31,26 @@ export class BaseListPage<T> {
     const loading = await this.overlayService.loading();
     this.list$ = this.service.getAll();
     this.list$.pipe(take(1)).subscribe(lists => loading.dismiss());
+  
+    // let myCompare: CompareModel[] = [];
+
+    // this.service.getAll().forEach(a => {
+    //   a.forEach(b => {
+    //     myCompare.push({
+    //       //name: b.issueDate.toDate().toLocaleString().split(' ')[0].,
+    //       name: ("0" + (b.issueDate.toDate().getMonth() + 1)).toLocaleString().slice(-2) + "/" + b.issueDate.toDate().getFullYear().toString(),
+    //       value: b.value,
+    //       value2: b.consumption,
+    //       color: ""
+    //     });
+    //   });
+    //   this.lists$ = of(myChart);
+    //   this.lists$.pipe(take(1)).subscribe(lists => loading.dismiss());
+
+    //   this.changeType("0");
+    // });
+
+
   }
 
   onUpdate(o: BaseModel): void {

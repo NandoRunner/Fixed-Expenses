@@ -7,10 +7,10 @@ const routes: Routes = [
     path: '',
     canActivateChild: [AuthGuard],
     children: [
-      /*{
+      {
         path: 'chart',
         loadChildren: './pages/power-chart/power-chart.module#PowerChartPageModule'
-      },*/
+      },
       {
         path: 'create',
         loadChildren: './pages/power-save/power-save.module#PowerSavePageModule'

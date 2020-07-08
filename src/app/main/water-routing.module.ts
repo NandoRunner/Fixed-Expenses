@@ -7,10 +7,10 @@ const routes: Routes = [
     path: '',
     canActivateChild: [AuthGuard],
     children: [
-      /*{
+      {
         path: 'chart',
         loadChildren: './pages/water-chart/water-chart.module#WaterChartPageModule'
-      },*/
+      },
       {
         path: 'create',
         loadChildren: './pages/water-save/water-save.module#WaterSavePageModule'
