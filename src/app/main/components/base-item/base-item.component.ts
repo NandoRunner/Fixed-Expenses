@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 import { BaseModel } from '../../models/base.model';
+import { CompareModel } from '../../models/compare.model';
 
 @Component({
   selector: 'app-base-item',
@@ -10,8 +11,12 @@ import { BaseModel } from '../../models/base.model';
 export class BaseItemComponent {
 
   @Input() item: any;
+  @Input() compare: CompareModel;
   @Input() values: number;
   @Output() update = new EventEmitter<BaseModel>();
   @Output() delete = new EventEmitter<BaseModel>();
 
+  arrowUp: string = "↑";
+  arrowDown: string = "↓";
+  
 }

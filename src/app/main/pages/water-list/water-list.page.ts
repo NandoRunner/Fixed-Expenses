@@ -15,7 +15,7 @@ export class WaterListPage extends BaseListPage<Water> {
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    protected service: WaterService
+    public service: WaterService
   ) {
     super(navCtrl, overlayService, service, "water");
   }

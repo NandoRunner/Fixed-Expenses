@@ -1,5 +1,4 @@
 import { Timestamp } from '@firebase/firestore-types';
-import { CompareModel } from './compare.model';
 
 export interface BaseModel {
   id: string;
@@ -7,5 +6,4 @@ export interface BaseModel {
   issueDate: Timestamp;
   consumption: number;
   value: number;
-  compare: CompareModel;
 }

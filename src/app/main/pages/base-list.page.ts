@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { OverlayService } from 'src/app/core/services/overlay.service';
@@ -16,41 +16,24 @@ export class BaseListPage<T> {
   public route: string;
 
   list$: Observable<any[]>;
+  listNew: Observable<any[]>;
 
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    protected service: BaseService,
+    public service: BaseService,
     protected name: string
   ) {
     this.title = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
     this.route = name;
+
+
   }
 
   async ngOnInit(): Promise<void> {
     const loading = await this.overlayService.loading();
     this.list$ = this.service.getAll();
     this.list$.pipe(take(1)).subscribe(lists => loading.dismiss());
-  
-    // let myCompare: CompareModel[] = [];
-
-    // this.service.getAll().forEach(a => {
-    //   a.forEach(b => {
-    //     myCompare.push({
-    //       //name: b.issueDate.toDate().toLocaleString().split(' ')[0].,
-    //       name: ("0" + (b.issueDate.toDate().getMonth() + 1)).toLocaleString().slice(-2) + "/" + b.issueDate.toDate().getFullYear().toString(),
-    //       value: b.value,
-    //       value2: b.consumption,
-    //       color: ""
-    //     });
-    //   });
-    //   this.lists$ = of(myChart);
-    //   this.lists$.pipe(take(1)).subscribe(lists => loading.dismiss());
-
-    //   this.changeType("0");
-    // });
-
-
   }
 
   onUpdate(o: BaseModel): void {

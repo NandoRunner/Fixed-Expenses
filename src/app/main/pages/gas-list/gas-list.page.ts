@@ -15,7 +15,7 @@ export class GasListPage extends BaseListPage<Gas> {
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    protected service: GasService
+    public service: GasService
   ) {
     super(navCtrl, overlayService, service, "gas");
   }

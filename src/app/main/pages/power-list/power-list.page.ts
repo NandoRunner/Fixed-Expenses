@@ -16,7 +16,7 @@ export class PowerListPage extends BaseListPage<Power> {
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    protected service: PowerService
+    public service: PowerService
   ) {
     super(navCtrl, overlayService, service, "power");
   }

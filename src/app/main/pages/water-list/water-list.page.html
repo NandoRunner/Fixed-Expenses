@@ -7,11 +7,14 @@
       <ion-label>{{ "date" | translate }}</ion-label>
       <ion-label>Consumo</ion-label>
       <ion-label>Valor</ion-label>
+      <ion-label>C./Mês ant.</ion-label>
+      <ion-label>C./Ano ant.</ion-label>
     </ion-item>
     <ng-container *ngIf="list.length > 0; else noItems">
       <app-base-item
         *ngFor="let item of list"
         [item]="item"
+        [compare]="service.myMap.get(item.issueDate.toDate() | date:'MM/yyyy')" 
         [values]="2"
         (update)="onUpdate($event)"
         (delete)="onDelete($event)"
