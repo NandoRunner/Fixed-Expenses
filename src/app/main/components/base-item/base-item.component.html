@@ -2,11 +2,11 @@
   <ion-item (click)="update.emit(item)">
     <ion-label>{{ item.issueDate.toDate() | date:'MM/yyyy' }}</ion-label>
     <ion-label>{{ item.consumption }}</ion-label>
-    <ion-label>{{ item.value }}</ion-label>
-    <ion-label color="{{ (compare.cLastMonth > 0 ? 'danger' : (compare.cLastMonth < 0 ? 'primary' : 'dark'))}}">
+    <ion-label *ngIf="platform.isLandscape()" color="{{ (compare.cLastMonth > 0 ? 'danger' : (compare.cLastMonth < 0 ? 'primary' : 'dark'))}}">
       <small>{{ compare.cLastMonth > 0 ? arrowUp + compare.cLastMonth : (compare.cLastMonth < 0 ? arrowDown : '') + (compare.cLastMonth * -1)}}</small></ion-label>
     <ion-label color="{{ (compare.cOneYearAgo > 0 ? 'danger' : (compare.cOneYearAgo < 0 ? 'primary' : 'dark'))}}">
       <small>{{ compare.cOneYearAgo > 0 ? arrowUp + compare.cOneYearAgo : (compare.cOneYearAgo < 0 ? arrowDown : '') + (compare.cOneYearAgo * -1)}}</small></ion-label>
+    <ion-label>{{ item.value }}</ion-label>
   </ion-item>
   <ion-item-options side="start">
     <ion-item-option color="danger" (click)="delete.emit(item); sliding.close()">

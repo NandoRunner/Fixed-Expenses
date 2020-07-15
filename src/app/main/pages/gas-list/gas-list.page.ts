@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, Platform } from '@ionic/angular';
 import { OverlayService } from 'src/app/core/services/overlay.service';
 import { BaseListPage } from '../base-list.page';
 import { GasService } from '../../services/gas.service';
@@ -15,7 +15,8 @@ export class GasListPage extends BaseListPage<Gas> {
   constructor(
     protected navCtrl: NavController,
     protected overlayService: OverlayService,
-    public service: GasService
+    public service: GasService,
+    public platform: Platform
   ) {
     super(navCtrl, overlayService, service, "gas");
   }

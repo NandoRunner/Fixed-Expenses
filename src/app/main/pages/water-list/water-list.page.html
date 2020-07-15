@@ -3,12 +3,12 @@
 
 <ion-content class="ion-padding">
   <ion-list *ngIf="list$ | async as list">
-      <ion-item>
+   <ion-item>
       <ion-label>{{ "date" | translate }}</ion-label>
       <ion-label>Consumo</ion-label>
+      <ion-label *ngIf="platform.isLandscape()">Mês ant.</ion-label>
+      <ion-label>Ano ant.</ion-label>
       <ion-label>Valor</ion-label>
-      <ion-label>C./Mês ant.</ion-label>
-      <ion-label>C./Ano ant.</ion-label>
     </ion-item>
     <ng-container *ngIf="list.length > 0; else noItems">
       <app-base-item
