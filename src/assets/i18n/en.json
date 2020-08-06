@@ -9,6 +9,7 @@
   "chart": {
     "select": "Select Chart Type",
     "bar": { "name": "Bar", "name2": "Bar 2", "title": "", "subTitle": "Bar Chart" },
+    "bar-line": { "name": "Bar", "name2": "Bar 2", "title": "", "subTitle": "Bar Chart" },
     "pie": { "name": "Pie", "name2": "Pie 2", "title": "", "subTitle": "Pie Chart" }
   },
   "power": { "title": "Power Expenditure", "menu": "Power", "new": "New", "edit": "Edit" },

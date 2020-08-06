@@ -9,6 +9,7 @@
   "chart": {
     "select": "Selecione o Tipo de Gráfico",
     "bar": { "name": "Valor (Barra)", "name2": "Consumo (Barra)", "title": "", "subTitle": "Últimas 12 medições" },
+    "bar-line": { "name": "Valor (Barra)", "name2": "Consumo (Barra)", "title": "", "subTitle": "Últimas 12 medições" },
     "pie": { "name": "Valor (Pizza)", "name2": "Consumo (Pizza)", "title": "", "subTitle": "Número de medições por grupo" }
   },
   "power": {

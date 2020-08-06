@@ -32,7 +32,7 @@ export class PowerChartPage extends BaseChartPage {
   async ngOnInit(): Promise<void> {
     this.splitMin = 0;
     this.splitMax = 0;
-    //this.measure = "R$";
+    this.measure = [];
     await this.loadData();
   }
 
@@ -50,6 +50,7 @@ export class PowerChartPage extends BaseChartPage {
               name: ("0" + (b.issueDate.toDate().getMonth() + 1)).toLocaleString().slice(-2) + "/" + b.issueDate.toDate().getFullYear().toString(),
               value: b.value,
               value2: b.consumption,
+              value3: 0,
               color: ""
             });
           });
@@ -65,12 +66,12 @@ export class PowerChartPage extends BaseChartPage {
   changeType(param: any) {
     this.showBar = this.showPie = this.showBar2 = this.showPie2 = false;
 
-    this.measure = "R$";
+    this.measure[0] = "R$";
     this.valueType = 1;
   
     if (param === "2" || param === "3")
     {
-      this.measure = "m3";
+      this.measure[0] = "m3";
       this.valueType = 2;
     }
  
