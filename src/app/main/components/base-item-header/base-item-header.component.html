@@ -1,0 +1,7 @@
+<ion-item class="{{ cssName }}">
+  <ion-label class="ion-text-start">{{ "date" | translate }}</ion-label>
+  <ion-label class="ion-text-center">{{ "expenditure" | translate }}</ion-label>
+  <ion-label class="ion-text-center">{{ "dateLastYear.part1" | translate }}<br>{{ "dateLastYear.part2" | translate }}</ion-label>
+  <ion-label class="ion-text-end">{{ "value" | translate }}</ion-label>
+  <ion-label class="ion-text-center" *ngIf="platform.isLandscape()">{{ "dateLastYear.part1" | translate }}<br>{{ "dateLastYear.part2" | translate }}</ion-label>
+</ion-item>

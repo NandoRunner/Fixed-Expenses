@@ -4,7 +4,13 @@
     "saving": "Salvando...",
     "errorSaving": "Erro salvando "
   },
-  "date": "Data",
+  "date": "Período",
+  "dateLastYear": {
+    "part1": "Var. período",
+    "part2": "ano anterior"
+  },
+  "expenditure": "Consumo",
+  "value": "Valor", 
   "no-list": "Sem itens cadastrados...",
   "chart": {
     "select": "Selecione o Tipo de Gráfico",

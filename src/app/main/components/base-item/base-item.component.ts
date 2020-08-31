@@ -15,6 +15,7 @@ export class BaseItemComponent {
   @Input() item: any;
   @Input() compare: CompareModel;
   @Input() values: number;
+  @Input() cssName: string;
   @Output() update = new EventEmitter<BaseModel>();
   @Output() delete = new EventEmitter<BaseModel>();
 

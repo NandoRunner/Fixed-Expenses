@@ -44,7 +44,7 @@ export class BaseService extends Firestore<BaseModel> {
     
     return Math.floor(v1 - v2);
   }
-
+ 
   private getComparePercentage(v1: number, v2: number): number {
     
     if (v1 < v2) {
@@ -80,7 +80,7 @@ export class BaseService extends Firestore<BaseModel> {
 
         if (this.myMap.has(keyY)) {
           baseCompare.cOneYearAgo = this.getCompareDiff(b.consumption, this.myMap.get(keyY).c);
-          baseCompare.vOneYearAgo = this.getCompareDiff(b.value, this.myMap.get(keyY).v);
+          baseCompare.vOneYearAgo = Number((b.value - this.myMap.get(keyY).v).toFixed(2));
         }
 
         baseCompare.c = b.consumption;

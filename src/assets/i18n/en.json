@@ -5,7 +5,13 @@
     "errorSaving": "Error saving "
   },
   "no-list": "No List yet...",
-  "date": "Date",
+  "date": "Period",
+  "dateLastYear": {
+    "part1": "Period var.",
+    "part2": "lastyear"
+  },
+  "expenditure": "Expenditure",
+  "value": "Value", 
   "chart": {
     "select": "Select Chart Type",
     "bar": { "name": "Bar", "name2": "Bar 2", "title": "", "subTitle": "Bar Chart" },
