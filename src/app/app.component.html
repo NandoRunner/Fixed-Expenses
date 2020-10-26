@@ -14,7 +14,10 @@ when="md">
 
     <ion-content>
       <ion-list>
-        <ion-list-header *ngIf="user">{{ user.displayName }}</ion-list-header>
+        <div class="ion-text-center">
+          <h1>Fixed Expenses</h1>
+          <ion-list-header *ngIf="user"><i>{{ user.displayName }}</i></ion-list-header>
+        </div>
         <ion-menu-toggle autoHide="false">
           <ion-item
             button

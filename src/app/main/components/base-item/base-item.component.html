@@ -4,7 +4,7 @@
     <ion-label class="ion-text-center">{{ item.consumption }}</ion-label>
     <ion-label class="ion-text-center" color="{{ (compare.cOneYearAgo > 0 ? 'danger' : (compare.cOneYearAgo < 0 ? 'primary' : 'dark'))}}">
       <small>{{ compare.cOneYearAgo > 0 ? arrowUp + compare.cOneYearAgo : (compare.cOneYearAgo < 0 ? arrowDown : '') + (compare.cOneYearAgo * -1)}}</small></ion-label>
-    <ion-label class="ion-text-end">{{ item.value }}</ion-label>
+    <ion-label class="ion-text-end">{{ item.value | currency:'BRL'}}</ion-label>
     <ion-label class="ion-text-center" *ngIf="platform.isLandscape()" color="{{ (compare.vOneYearAgo > 0 ? 'danger' : (compare.vOneYearAgo < 0 ? 'primary' : 'dark'))}}">
       <small>{{ compare.vOneYearAgo > 0 ? arrowUp + compare.vOneYearAgo : (compare.vOneYearAgo < 0 ? arrowDown : '') + (compare.vOneYearAgo * -1)}}</small></ion-label>
   </ion-item>
