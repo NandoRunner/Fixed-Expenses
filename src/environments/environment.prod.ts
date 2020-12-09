@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  CURRENT_VERSION: "0.20.16",
+  CURRENT_VERSION: "0.20.18",
   hostingName: "Fixed Expenses",
   icon: "calculator",
   init_page: "water",
