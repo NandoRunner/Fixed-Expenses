@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  CURRENT_VERSION: "0.20.20",
-  hostingName: "Fixed Expenses",
-  icon: "calculator",
-  init_page: "water", 
+  CURRENT_VERSION: '0.21.3',
+  hostingName: 'Fixed Expenses',
+  icon: 'calculator',
+  init_page: 'water',
   firebase: {
     apiKey: 'AIzaSyB8YElMeuS6OUJId8uLUgiOZ71XnMNRqMo',
     authDomain: 'expense-register-17e66.firebaseapp.com',

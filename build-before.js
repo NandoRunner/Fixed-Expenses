@@ -17,12 +17,12 @@ const fs = require('fs');
         console.log("package.json app version updated");
 
         let prodEnvData = fs.readFileSync(`src/environments/environment.prod.ts`, 'utf-8');
-        prodEnvData = prodEnvData.replace(/CURRENT_VERSION: ".*"/, `CURRENT_VERSION: "${packageJSON.version}"`);
+        prodEnvData = prodEnvData.replace(/CURRENT_VERSION: '.*'/, `CURRENT_VERSION: '${packageJSON.version}'`);
         fs.writeFileSync('src/environments/environment.prod.ts', prodEnvData, 'utf-8');
         console.log("environments.prod.ts app version updated");
 
         let defaultEnvData = fs.readFileSync(`src/environments/environment.ts`, 'utf-8');
-        defaultEnvData = defaultEnvData.replace(/CURRENT_VERSION: ".*"/, `CURRENT_VERSION: "${packageJSON.version}"`);
+        defaultEnvData = defaultEnvData.replace(/CURRENT_VERSION: '.*'/, `CURRENT_VERSION: '${packageJSON.version}'`);
         fs.writeFileSync('src/environments/environment.ts', defaultEnvData, 'utf-8');
         console.log("environments.ts app version updated");
 /*
