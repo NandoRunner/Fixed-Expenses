@@ -19,7 +19,7 @@ export class PowerListPage extends BaseListPage<Power> {
     public service: PowerService,
     public platform: Platform
   ) {
-    super(navCtrl, overlayService, service, "power");
+    super(navCtrl, overlayService, service, 'power');
   }
  
 }
