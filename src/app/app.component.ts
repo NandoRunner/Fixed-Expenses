@@ -28,6 +28,7 @@ export class AppComponent {
 
   initializeApp() {
     this.pages = [
+      { url: '/home', direction: 'back', icon: 'home', text: 'home.menu' },
       { url: '/gas', direction: 'back', icon: 'checkmark', text: 'gas.menu' },
       { url: '/power', direction: 'back', icon: 'checkmark', text: 'power.menu' },
       { url: '/water', direction: 'back', icon: 'checkmark', text: 'water.menu' },

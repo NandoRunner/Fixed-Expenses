@@ -8,11 +8,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './auth/auth.module#AuthModule' },
   { path: 'gas', loadChildren: './main/gas.module#GasModule', canLoad: [AuthGuard] },
   { path: 'power', loadChildren: './main/power.module#PowerModule', canLoad: [AuthGuard] },
-  { path: 'water', loadChildren: './main/water.module#WaterModule', canLoad: [AuthGuard] },  {
-    path: 'home',
-    loadChildren: () => import('./app/main/pages/home/home.module').then( m => m.HomePageModule)
-  }
-
+  { path: 'water', loadChildren: './main/water.module#WaterModule', canLoad: [AuthGuard] },
+  { path: 'home', loadChildren: './main/home.module#HomeModule', canLoad: [AuthGuard] }
 ];
 
 @NgModule({
