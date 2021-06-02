@@ -249,7 +249,6 @@ export class BaseChartPage implements OnInit {
       this.subTitle = "chart.bar.subTitle";
       this.title = "chart.bar.title"; 
     }
-
   }
 
   protected createPieChart() {
