@@ -1,4 +1,4 @@
-import { OnInit, Directive } from '@angular/core';
+import { OnInit, Directive, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { take } from 'rxjs/operators';
@@ -7,8 +7,7 @@ import { PageModel } from '../models/page.model';
 import { TranslateService } from '@ngx-translate/core';
 
 @Directive()
-export class BaseSavePage<T> implements OnInit {
-
+export class BaseSavePageDirective<T> {
   myDate: Date = new Date();
   pageTitle = '...';
   formGroup: FormGroup;
@@ -23,22 +22,19 @@ export class BaseSavePage<T> implements OnInit {
     protected overlayService: OverlayService,
     protected service: any,
     protected translate: TranslateService,
-    protected name: string
-  ) { 
+    protected name: string,
+  ) {
     this.page.titleNew = `${name}.new`;
     this.page.titleEdit = `${name}.edit`;
     this.page.navBack = `/${name}`;
 
-    this.translate.get('page').subscribe(translation => {
+    this.translate.get('page').subscribe((translation) => {
       this.page.error = translation.errorSaving;
       this.page.saving = translation.saving;
     });
   }
 
-  ngOnInit(): void { }
-
   protected init(itemId: any): void {
-
     if (!itemId) {
       this.pageTitle = this.page.titleNew;
       return;
@@ -50,7 +46,9 @@ export class BaseSavePage<T> implements OnInit {
       .pipe(take(1))
       .subscribe(({ issueDate, consumption, value, type }) => {
         this.formGroup.get('id').setValue(itemId);
-        this.formGroup.get('issueDate').setValue(issueDate.toDate().toISOString());
+        this.formGroup
+          .get('issueDate')
+          .setValue(issueDate.toDate().toISOString());
         this.formGroup.get('consumption').setValue(consumption);
         this.formGroup.get('value').setValue(value);
         this.formGroup.get('type').setValue(type);
@@ -61,32 +59,39 @@ export class BaseSavePage<T> implements OnInit {
     this.formGroup = this.fb.group({
       id: [''],
       issueDate: ['', [Validators.required]],
-      consumption: ['', [Validators.required, Validators.min(1), Validators.max(1000)]],
-      value: ['', [Validators.required, Validators.min(1), Validators.max(1000)]],
-      type: [this.type]
+      consumption: [
+        '',
+        [Validators.required, Validators.min(1), Validators.max(1000)],
+      ],
+      value: [
+        '',
+        [Validators.required, Validators.min(1), Validators.max(1000)],
+      ],
+      type: [this.type],
     });
   }
 
   async onSubmit(): Promise<void> {
-
     this.formGroup.get('issueDate').setValue(this.myDate);
 
     const loading = await this.overlayService.loading({
-      message: this.page.saving
+      message: this.page.saving,
     });
     try {
       const item = !this.baseId
         ? await this.service.create(this.formGroup.value)
         : await this.service.update({
-          id: this.baseId,
-          ...this.formGroup.value
-        });
+            id: this.baseId,
+            ...this.formGroup.value,
+          });
       this.service.deleteFieldId(item.id);
-      this.navCtrl.navigateBack(this.page.navBack);
+
+      console.log('chegou');
+      this.navCtrl.pop();
     } catch (error) {
       console.log(this.page.error, error);
       await this.overlayService.toast({
-        message: error.message
+        message: error.message,
       });
     } finally {
       loading.dismiss();

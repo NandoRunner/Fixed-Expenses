@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { OverlayService } from 'src/app/core/services/overlay.service';
-import { BaseSavePage } from '../base-save.page';
+import { BaseSavePageDirective } from '../base-save.page';
 import { TranslateService } from '@ngx-translate/core';
 import { WaterService } from '../../services/water.service';
 import { Water } from '../../models/water.model';
@@ -14,7 +14,7 @@ import { Water } from '../../models/water.model';
   templateUrl: './water-save.page.html',
   styleUrls: ['../blue.page.scss'],
 })
-export class WaterSavePage extends BaseSavePage<Water> {
+export class WaterSavePage extends BaseSavePageDirective<Water> implements OnInit {
 
   constructor(
     protected fb: FormBuilder,

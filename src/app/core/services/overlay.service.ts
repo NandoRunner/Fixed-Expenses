@@ -32,8 +32,8 @@ export class OverlayService {
     const toast = await this.toastCtrl.create({
       position: 'bottom',
       duration: 3000,
-      //showCloseButton: true,
-      //closeButtonText: 'Ok',
+      // showCloseButton: true,
+      // closeButtonText: 'Ok',
       ...options
     });
     await toast.present();
