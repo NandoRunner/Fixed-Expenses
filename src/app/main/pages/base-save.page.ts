@@ -1,4 +1,4 @@
-import { OnInit, Directive, OnDestroy } from '@angular/core';
+import { OnInit, Directive, OnDestroy, Injector } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { take } from 'rxjs/operators';
@@ -16,14 +16,21 @@ export class BaseSavePageDirective<T> {
 
   protected type: string;
 
+  protected fb: FormBuilder;
+  protected navCtrl: NavController;
+  protected overlayService: OverlayService;
+  protected translate: TranslateService;
+
   constructor(
-    protected fb: FormBuilder,
-    protected navCtrl: NavController,
-    protected overlayService: OverlayService,
+    private injectorObj: Injector,
     protected service: any,
-    protected translate: TranslateService,
     protected name: string,
   ) {
+    this.fb = this.injectorObj.get(FormBuilder);
+    this.navCtrl = this.injectorObj.get(NavController);
+    this.overlayService = this.injectorObj.get(OverlayService);
+    this.translate = this.injectorObj.get(TranslateService);
+
     this.page.titleNew = `${name}.new`;
     this.page.titleEdit = `${name}.edit`;
     this.page.navBack = `/${name}`;

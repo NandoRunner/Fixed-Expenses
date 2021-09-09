@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
@@ -15,15 +15,11 @@ import { Gas } from '../../models/gas.model';
 })
 export class GasSavePage extends BaseSavePageDirective<Gas> implements OnInit {
   constructor(
-    protected fb: FormBuilder,
-    protected navCtrl: NavController,
-    protected overlayService: OverlayService,
+    private injector: Injector,
     protected route: ActivatedRoute,
     protected service: GasService,
-    protected translate: TranslateService
   ) {
-    super(fb, navCtrl, overlayService, service, translate, 'gas');
-
+    super(injector, service, 'gas');
     this.type = '3';
   }
 
