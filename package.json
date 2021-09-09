@@ -9,7 +9,7 @@
     "build": "ng build",
     "build-prod": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "eslint -c .eslintrc.js --ext .ts ./src",
     "e2e": "ng e2e",
     "before-build": "node build-before.js",
     "bb": "npm-run-all -s before-build build-prod"
@@ -50,7 +50,10 @@
     "@types/jasmine": "~3.6.0",
     "@types/jasminewd2": "^2.0.10",
     "@types/node": "~8.9.4",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
     "codelyzer": "^6.0.0",
+    "eslint": "^7.32.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "^6.3.4",
@@ -61,7 +64,6 @@
     "npm-run-all": "^4.1.5",
     "protractor": "~7.0.0",
     "ts-node": "~7.0.0",
-    "tslint": "~6.1.3",
     "typescript": "^4.1.6"
   },
   "description": "An Ionic project"

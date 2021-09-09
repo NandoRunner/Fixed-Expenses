@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
-import { OverlayService } from 'src/app/core/services/overlay.service';
-import { BaseListPage } from '../base-list.page';
+import { Component, Injector, OnInit } from '@angular/core';
+import { BaseListPageDirective } from '../base-list.page';
 import { WaterService } from '../../services/water.service';
 import { Water } from '../../models/water.model';
 
@@ -10,15 +8,13 @@ import { Water } from '../../models/water.model';
   templateUrl: './water-list.page.html',
   styleUrls: ['../blue.page.scss']
 })
-export class WaterListPage extends BaseListPage<Water> {
+export class WaterListPage extends BaseListPageDirective<Water> {
 
   constructor(
-    protected navCtrl: NavController,
-    protected overlayService: OverlayService,
-    public service: WaterService,
-    public platform: Platform
+    private injector: Injector,
+    public service: WaterService
   ) {
-    super(navCtrl, overlayService, service, "water");
+    super(injector, service, "water");
   }
  
 }

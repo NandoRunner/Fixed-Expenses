@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
-import { OverlayService } from 'src/app/core/services/overlay.service';
-import { BaseListPage } from '../base-list.page';
+import { Component, Injector, OnInit } from '@angular/core';
+import { BaseListPageDirective } from '../base-list.page';
 import { GasService } from '../../services/gas.service';
 import { Gas } from '../../models/gas.model';
 
@@ -10,15 +8,12 @@ import { Gas } from '../../models/gas.model';
   templateUrl: './gas-list.page.html',
   styleUrls: ['../green.page.scss'],
 })
-export class GasListPage extends BaseListPage<Gas> {
+export class GasListPage extends BaseListPageDirective<Gas> {
 
-  constructor(
-    protected navCtrl: NavController,
-    protected overlayService: OverlayService,
-    public service: GasService,
-    public platform: Platform
+  constructor(private injector: Injector,
+    public service: GasService
   ) {
-    super(navCtrl, overlayService, service, "gas");
+    super(injector, service, "gas");
   }
 
 }
