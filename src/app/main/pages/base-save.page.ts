@@ -23,14 +23,15 @@ export class BaseSavePageDirective<T> {
 
   constructor(
     private injectorObj: Injector,
-    protected service: any,
-    protected name: string,
+    protected service: any
   ) {
     this.fb = this.injectorObj.get(FormBuilder);
     this.navCtrl = this.injectorObj.get(NavController);
     this.overlayService = this.injectorObj.get(OverlayService);
     this.translate = this.injectorObj.get(TranslateService);
 
+    const name = this.service.serviceName.toLowerCase();
+    this.type = this.service.type;
     this.page.titleNew = `${name}.new`;
     this.page.titleEdit = `${name}.edit`;
     this.page.navBack = `/${name}`;

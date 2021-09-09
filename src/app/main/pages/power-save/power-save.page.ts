@@ -1,10 +1,6 @@
 import { Component, Injector, OnInit } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
-import { NavController } from "@ionic/angular";
-import { OverlayService } from "src/app/core/services/overlay.service";
 import { BaseSavePageDirective } from "../base-save.page";
-import { TranslateService } from "@ngx-translate/core";
 import { PowerService } from "../../services/power.service";
 import { Power } from "../../models/power.model";
 
@@ -22,8 +18,7 @@ export class PowerSavePage
     protected route: ActivatedRoute,
     protected service: PowerService
   ) {
-    super(injector, service, "power");
-    this.type = "1";
+    super(injector, service);
   }
 
   ngOnInit(): void {
