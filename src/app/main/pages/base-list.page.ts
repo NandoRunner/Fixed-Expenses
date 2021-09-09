@@ -1,6 +1,6 @@
-import { OnInit, Directive, Injector } from "@angular/core";
+import { OnInit, Directive, Injector, OnDestroy } from "@angular/core";
 import { NavController } from "@ionic/angular";
-import { Observable } from "rxjs";
+import { Observable, Subscription } from "rxjs";
 import { take } from "rxjs/operators";
 
 import { OverlayService } from "src/app/core/services/overlay.service";
@@ -9,13 +9,13 @@ import { BaseService } from "../services/base.service";
 import { BaseModel } from "../models/base.model";
 
 @Directive()
-export class BaseListPageDirective<T> implements OnInit {
+export class BaseListPageDirective<T> implements OnInit, OnDestroy {
   public title: string;
   public language: string;
   public route: string;
 
   list$: Observable<any[]>;
-  listNew: Observable<any[]>;
+  subscription: Subscription;
 
   navCtrl: NavController;
   overlayService: OverlayService;
@@ -30,11 +30,14 @@ export class BaseListPageDirective<T> implements OnInit {
     this.title = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
     this.route = name;
   }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   async ngOnInit(): Promise<void> {
     const loading = await this.overlayService.loading();
     this.list$ = this.service.getAll();
-    this.list$.pipe(take(1)).subscribe((lists) => loading.dismiss());
+    this.subscription = this.list$.pipe(take(1)).subscribe((lists) => loading.dismiss());
   }
 
   onUpdate(o: BaseModel): void {
