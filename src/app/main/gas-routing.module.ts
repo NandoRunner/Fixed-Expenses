@@ -9,19 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'chart',
-        loadChildren: './pages/gas-chart/gas-chart.module#GasChartPageModule'
+        loadChildren: () => import('./pages/gas-chart/gas-chart.module').then(m => m.GasChartPageModule)
       },
       {
         path: 'create',
-        loadChildren: './pages/gas-save/gas-save.module#GasSavePageModule'
+        loadChildren: () => import('./pages/gas-save/gas-save.module').then(m => m.GasSavePageModule)
       },
       {
         path: 'edit/:id',
-        loadChildren: './pages/gas-save/gas-save.module#GasSavePageModule'
+        loadChildren: () => import('./pages/gas-save/gas-save.module').then(m => m.GasSavePageModule)
       },
       {
          path: '',
-         loadChildren: './pages/gas-list/gas-list.module#GasListPageModule'
+         loadChildren: () => import('./pages/gas-list/gas-list.module').then(m => m.GasListPageModule)
        }
     ]
   }

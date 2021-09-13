@@ -5,11 +5,11 @@ import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadChildren: './auth/auth.module#AuthModule' },
-  { path: 'gas', loadChildren: './main/gas.module#GasModule', canLoad: [AuthGuard] },
-  { path: 'power', loadChildren: './main/power.module#PowerModule', canLoad: [AuthGuard] },
-  { path: 'water', loadChildren: './main/water.module#WaterModule', canLoad: [AuthGuard] },
-  { path: 'home', loadChildren: './main/home.module#HomeModule', canLoad: [AuthGuard] }
+  { path: 'login', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'gas', loadChildren: () => import('./main/gas.module').then(m => m.GasModule), canLoad: [AuthGuard] },
+  { path: 'power', loadChildren: () => import('./main/power.module').then(m => m.PowerModule), canLoad: [AuthGuard] },
+  { path: 'water', loadChildren: () => import('./main/water.module').then(m => m.WaterModule), canLoad: [AuthGuard] },
+  { path: 'home', loadChildren: () => import('./main/home.module').then(m => m.HomeModule), canLoad: [AuthGuard] }
 ];
 
 @NgModule({

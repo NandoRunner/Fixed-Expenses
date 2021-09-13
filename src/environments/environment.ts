@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  CURRENT_VERSION: '0.21.5',
+  CURRENT_VERSION: '0.21.6',
   hostingName: 'Fixed Expenses',
   icon: 'calculator',
   init_page: 'water',
@@ -26,4 +26,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

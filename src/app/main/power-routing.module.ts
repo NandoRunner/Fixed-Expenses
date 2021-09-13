@@ -9,19 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'chart',
-        loadChildren: './pages/power-chart/power-chart.module#PowerChartPageModule'
+        loadChildren: () => import('./pages/power-chart/power-chart.module').then(m => m.PowerChartPageModule)
       },
       {
         path: 'create',
-        loadChildren: './pages/power-save/power-save.module#PowerSavePageModule'
+        loadChildren: () => import('./pages/power-save/power-save.module').then(m => m.PowerSavePageModule)
       },
       {
         path: 'edit/:id',
-        loadChildren: './pages/power-save/power-save.module#PowerSavePageModule'
+        loadChildren: () => import('./pages/power-save/power-save.module').then(m => m.PowerSavePageModule)
       },
       {
          path: '',
-         loadChildren: './pages/power-list/power-list.module#PowerListPageModule'
+         loadChildren: () => import('./pages/power-list/power-list.module').then(m => m.PowerListPageModule)
        }
     ]
   }

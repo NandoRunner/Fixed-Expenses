@@ -9,19 +9,19 @@ const routes: Routes = [
     children: [
       {
         path: 'chart',
-        loadChildren: './pages/water-chart/water-chart.module#WaterChartPageModule'
+        loadChildren: () => import('./pages/water-chart/water-chart.module').then(m => m.WaterChartPageModule)
       },
       {
         path: 'create',
-        loadChildren: './pages/water-save/water-save.module#WaterSavePageModule'
+        loadChildren: () => import('./pages/water-save/water-save.module').then(m => m.WaterSavePageModule)
       },
       {
         path: 'edit/:id',
-        loadChildren: './pages/water-save/water-save.module#WaterSavePageModule'
+        loadChildren: () => import('./pages/water-save/water-save.module').then(m => m.WaterSavePageModule)
       },
       {
          path: '',
-         loadChildren: './pages/water-list/water-list.module#WaterListPageModule'
+         loadChildren: () => import('./pages/water-list/water-list.module').then(m => m.WaterListPageModule)
        }
     ]
   }
