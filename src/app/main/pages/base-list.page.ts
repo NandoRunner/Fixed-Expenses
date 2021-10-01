@@ -37,7 +37,9 @@ export class BaseListPageDirective<T> implements OnInit, OnDestroy {
   async ngOnInit(): Promise<void> {
     const loading = await this.overlayService.loading();
     this.list$ = this.service.getAll();
-    this.subscription = this.list$.pipe(take(1)).subscribe((lists) => loading.dismiss());
+    this.subscription = this.list$
+      .pipe(take(1))
+      .subscribe((lists) => loading.dismiss());
   }
 
   onUpdate(o: BaseModel): void {
