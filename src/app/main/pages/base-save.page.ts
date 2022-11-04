@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { OverlayService } from 'src/app/core/services/overlay.service';
 import { PageModel } from '../models/page.model';
 import { TranslateService } from '@ngx-translate/core';
+import { Timestamp } from '@firebase/firestore-types';
 
 @Directive()
 export class BaseSavePageDirective<T> {
@@ -45,6 +46,11 @@ export class BaseSavePageDirective<T> {
   protected init(itemId: any): void {
     if (!itemId) {
       this.pageTitle = this.page.titleNew;
+      this.myDate = this.service.maxIssueDate.toDate();
+      this.myDate.setMonth(this.myDate.getMonth() + 1);
+      // this.formGroup
+      //   .get('issueDate')
+      //   .setValue(dt.toISOString());
       return;
     }
     this.baseId = itemId;
@@ -89,10 +95,12 @@ export class BaseSavePageDirective<T> {
       const item = !this.baseId
         ? await this.service.create(this.formGroup.value)
         : await this.service.update({
-            id: this.baseId,
-            ...this.formGroup.value,
-          });
+          id: this.baseId,
+          ...this.formGroup.value,
+        });
       this.service.deleteFieldId(item.id);
+      
+      this.service.reloadMax();
 
       console.log('chegou');
       this.navCtrl.pop();

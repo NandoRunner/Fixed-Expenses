@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 export abstract class Firestore<T extends { id: string }> {
   protected collection: AngularFirestoreCollection<T>;
 
-  constructor(protected db: AngularFirestore) {}
+  constructor(protected db: AngularFirestore) { }
 
   protected setCollection(path: string, queryFn?: QueryFn): void {
     this.collection = path ? this.db.collection(path, queryFn) : null;
@@ -16,12 +16,25 @@ export abstract class Firestore<T extends { id: string }> {
   private setItem(item: T, operation: string): Promise<T> {
     return this.collection
       .doc<T>(item.id)
-      [operation](item)
+    [operation](item)
       .then(() => item);
   }
 
   getAll(): Observable<T[]> {
     return this.collection.snapshotChanges().pipe(
+      map(actions =>
+        actions.map(a => {
+          const data = a.payload.doc.data() as T;
+          // const id = a.payload.doc.id;
+          return { ...(data as object), id: a.payload.doc.id } as T;
+        })
+      )
+    );
+  }
+
+  getCollectionWithQuery(path, queryFn): Observable<T[]> {
+    const col = this.db.collection(path, queryFn)
+    return col.snapshotChanges().pipe(
       map(actions =>
         actions.map(a => {
           const data = a.payload.doc.data() as T;

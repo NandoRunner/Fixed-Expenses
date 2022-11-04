@@ -5,6 +5,8 @@ import { Firestore } from "src/app/core/classes/firestore.class";
 import { BaseModel } from "../models/base.model";
 import { FixedType } from "../models/type.enum";
 import { CompareModel } from "../models/compare.model";
+import { take } from "rxjs/operators";
+import { Timestamp } from '@firebase/firestore-types';
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +15,9 @@ export class BaseService extends Firestore<BaseModel> {
   serviceName: string;
   collectionName: string;
   type: string;
+  public maxIssueDate: Timestamp;
   public myMap = new Map<string, CompareModel>();
+  private userId: string;
 
   constructor(private authService: AuthService, db: AngularFirestore) {
     super(db);
@@ -22,6 +26,7 @@ export class BaseService extends Firestore<BaseModel> {
   protected init(): void {
     this.authService.authState$.subscribe((user) => {
       if (user) {
+        this.userId = user.uid;
         // console.log(`Colllection: /users/${user.uid}/${this.collectionName}`);
         // console.log(`type: ${this.type}`);
         this.setCollection(`/users/${user.uid}/${this.collectionName}`, (ref) =>
@@ -33,7 +38,9 @@ export class BaseService extends Firestore<BaseModel> {
         this.setCollection(`/users/${user.uid}/${this.collectionName}`, (ref) =>
           ref.where("type", "==", this.type).orderBy("issueDate", "desc")
         );
-        //console.log(this.collection);
+
+        this.reloadMaxIssueDate();
+
         return;
       }
       this.setCollection(null);
@@ -111,4 +118,13 @@ export class BaseService extends Firestore<BaseModel> {
       //console.log(this.myMap);
     });
   }
+
+  reloadMaxIssueDate(): void {
+    this.getCollectionWithQuery(`/users/${this.userId}/${this.collectionName}`, (ref) =>
+      ref.where("type", "==", this.type).orderBy("issueDate", "desc").limit(1)
+    ).pipe(take(1)).subscribe((item) => {
+      this.maxIssueDate = item[0].issueDate;
+    });
+  }
+
 }
