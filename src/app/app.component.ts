@@ -53,7 +53,7 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    console.log("cheguei");
+
     this.languageService.setInitialAppLanguage();
   }
 }

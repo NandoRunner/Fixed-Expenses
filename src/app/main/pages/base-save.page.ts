@@ -100,9 +100,8 @@ export class BaseSavePageDirective<T> {
         });
       this.service.deleteFieldId(item.id);
       
-      this.service.reloadMax();
+      this.service.reloadMaxIssueDate();
 
-      console.log('chegou');
       this.navCtrl.pop();
     } catch (error) {
       console.log(this.page.error, error);
