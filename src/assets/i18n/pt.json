@@ -10,13 +10,28 @@
     "part2": "ano anterior"
   },
   "expenditure": "Consumo",
-  "value": "Valor", 
+  "value": "Valor",
   "no-list": "Sem itens cadastrados...",
   "chart": {
     "select": "Selecione o Tipo de Gráfico",
-    "bar": { "name": "Valor (Barra)", "name2": "Consumo (Barra)", "title": "", "subTitle": "Últimas 12 medições" },
-    "bar-line": { "name": "Valor (Barra)", "name2": "Consumo (Barra)", "title": "", "subTitle": "Últimas 12 medições" },
-    "pie": { "name": "Valor (Pizza)", "name2": "Consumo (Pizza)", "title": "", "subTitle": "Número de medições por grupo" }
+    "bar": {
+      "name": "Valor (Barra)",
+      "name2": "Consumo (Barra)",
+      "title": "",
+      "subTitle": "Últimas 12 medições"
+    },
+    "bar-line": {
+      "name": "Valor (Barra)",
+      "name2": "Consumo (Barra)",
+      "title": "",
+      "subTitle": "Últimas 12 medições"
+    },
+    "pie": {
+      "name": "Valor (Pizza)",
+      "name2": "Consumo (Pizza)",
+      "title": "",
+      "subTitle": "Número de medições por grupo"
+    }
   },
   "power": {
     "title": "Consumo de Energia",
@@ -47,5 +62,9 @@
     "logout": "Deseja realmente sair?",
     "yes": "Sim",
     "no": "Não"
+  },
+  "home": {
+    "title": "Consolidado",
+    "menu": "Home"
   }
 }
