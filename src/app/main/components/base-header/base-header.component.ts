@@ -1,13 +1,13 @@
-import { Component,  Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: 'app-base-header',
-  templateUrl: './base-header.component.html',
-  styleUrls: ['./base-header.component.scss'],
+  selector: "app-base-header",
+  templateUrl: "./base-header.component.html",
+  styleUrls: ["./base-header.component.scss"],
 })
 export class BaseHeaderComponent {
-
   @Input() title: string;
   @Input() isSave: boolean;
   @Input() cssName: string;
+  @Input() logoutBtn: boolean = true;
 }

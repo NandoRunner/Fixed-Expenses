@@ -1,13 +1,17 @@
-import { AngularFirestore, AngularFirestoreCollection, QueryFn } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  QueryFn,
+} from "@angular/fire/firestore";
+import { Observable } from "rxjs";
 // import { map } from 'rxjs/internal/operators/map';
-import * as firebase from 'firebase/app';
-import { map } from 'rxjs/operators';
+import * as firebase from "firebase/app";
+import { map } from "rxjs/operators";
 
 export abstract class Firestore<T extends { id: string }> {
   protected collection: AngularFirestoreCollection<T>;
 
-  constructor(protected db: AngularFirestore) { }
+  constructor(protected db: AngularFirestore) {}
 
   protected setCollection(path: string, queryFn?: QueryFn): void {
     this.collection = path ? this.db.collection(path, queryFn) : null;
@@ -16,14 +20,14 @@ export abstract class Firestore<T extends { id: string }> {
   private setItem(item: T, operation: string): Promise<T> {
     return this.collection
       .doc<T>(item.id)
-    [operation](item)
+      [operation](item)
       .then(() => item);
   }
 
   getAll(): Observable<T[]> {
     return this.collection.snapshotChanges().pipe(
-      map(actions =>
-        actions.map(a => {
+      map((actions) =>
+        actions.map((a) => {
           const data = a.payload.doc.data() as T;
           // const id = a.payload.doc.id;
           return { ...(data as object), id: a.payload.doc.id } as T;
@@ -33,10 +37,10 @@ export abstract class Firestore<T extends { id: string }> {
   }
 
   getCollectionWithQuery(path, queryFn): Observable<T[]> {
-    const col = this.db.collection(path, queryFn)
+    const col = this.db.collection(path, queryFn);
     return col.snapshotChanges().pipe(
-      map(actions =>
-        actions.map(a => {
+      map((actions) =>
+        actions.map((a) => {
           const data = a.payload.doc.data() as T;
           // const id = a.payload.doc.id;
           return { ...(data as object), id: a.payload.doc.id } as T;
@@ -55,8 +59,8 @@ export abstract class Firestore<T extends { id: string }> {
     let c: AngularFirestoreCollection<T>;
     c = path ? this.db.collection(path, queryFn) : null;
     return c.snapshotChanges().pipe(
-      map(actions =>
-        actions.map(a => {
+      map((actions) =>
+        actions.map((a) => {
           const data = a.payload.doc.data() as T;
           // const id = a.payload.doc.id;
           return { ...(data as object), id: a.payload.doc.id } as T;
@@ -71,11 +75,11 @@ export abstract class Firestore<T extends { id: string }> {
 
   create(item: T): Promise<T> {
     item.id = this.db.createId();
-    return this.setItem(item, 'set');
+    return this.setItem(item, "set");
   }
 
   update(item: T): Promise<T> {
-    return this.setItem(item, 'update');
+    return this.setItem(item, "update");
   }
 
   delete(item: T): Promise<void> {
@@ -83,7 +87,9 @@ export abstract class Firestore<T extends { id: string }> {
   }
 
   deleteFieldId(id: string): void {
-    const partial: Partial<any> = { id: firebase.firestore.FieldValue.delete() };
+    const partial: Partial<any> = {
+      id: firebase.firestore.FieldValue.delete(),
+    };
 
     const remove = this.collection.doc(id).update(partial);
   }

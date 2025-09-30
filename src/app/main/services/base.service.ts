@@ -6,7 +6,7 @@ import { BaseModel } from "../models/base.model";
 import { FixedType } from "../models/type.enum";
 import { CompareModel } from "../models/compare.model";
 import { take } from "rxjs/operators";
-import { Timestamp } from '@firebase/firestore-types';
+import { Timestamp } from "@firebase/firestore-types";
 
 @Injectable({
   providedIn: "root",
@@ -17,6 +17,7 @@ export class BaseService extends Firestore<BaseModel> {
   type: string;
   public maxIssueDate: Timestamp;
   public myMap = new Map<string, CompareModel>();
+  public lastItem: boolean = false;
   private userId: string;
 
   constructor(private authService: AuthService, db: AngularFirestore) {
@@ -29,15 +30,29 @@ export class BaseService extends Firestore<BaseModel> {
         this.userId = user.uid;
         // console.log(`Colllection: /users/${user.uid}/${this.collectionName}`);
         // console.log(`type: ${this.type}`);
+
         this.setCollection(`/users/${user.uid}/${this.collectionName}`, (ref) =>
           ref.where("type", "==", this.type).orderBy("issueDate", "asc")
         );
 
         this.loadCompare();
 
-        this.setCollection(`/users/${user.uid}/${this.collectionName}`, (ref) =>
-          ref.where("type", "==", this.type).orderBy("issueDate", "desc")
-        );
+        if (!this.lastItem) {
+          this.setCollection(
+            `/users/${user.uid}/${this.collectionName}`,
+            (ref) =>
+              ref.where("type", "==", this.type).orderBy("issueDate", "desc")
+          );
+        } else {
+          this.setCollection(
+            `/users/${user.uid}/${this.collectionName}`,
+            (ref) =>
+              ref
+                .where("type", "==", this.type)
+                .orderBy("issueDate", "desc")
+                .limit(1)
+          );
+        }
 
         this.reloadMaxIssueDate();
 
@@ -120,11 +135,14 @@ export class BaseService extends Firestore<BaseModel> {
   }
 
   reloadMaxIssueDate(): void {
-    this.getCollectionWithQuery(`/users/${this.userId}/${this.collectionName}`, (ref) =>
-      ref.where("type", "==", this.type).orderBy("issueDate", "desc").limit(1)
-    ).pipe(take(1)).subscribe((item) => {
-      this.maxIssueDate = item[0].issueDate;
-    });
+    this.getCollectionWithQuery(
+      `/users/${this.userId}/${this.collectionName}`,
+      (ref) =>
+        ref.where("type", "==", this.type).orderBy("issueDate", "desc").limit(1)
+    )
+      .pipe(take(1))
+      .subscribe((item) => {
+        this.maxIssueDate = item[0].issueDate;
+      });
   }
-
 }

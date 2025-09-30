@@ -11,7 +11,8 @@
     </ng-container>
 
     <ion-title>{{ title | translate }} </ion-title>
-    <app-logout-button slot="end" menu="main-menu"></app-logout-button>
+    <ng-container *ngIf="logoutBtn">
+      <app-logout-button slot="end" menu="main-menu"></app-logout-button>
+    </ng-container>
   </ion-toolbar>
 </ion-header>
-

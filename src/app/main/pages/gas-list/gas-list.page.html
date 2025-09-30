@@ -1,4 +1,4 @@
-<app-base-header [title]="'gas.title'" [isSave]=false [cssName]="'green'">
+<app-base-header [title]="'gas.title'" [isSave]="false" [cssName]="'green'">
 </app-base-header>
 
 <ion-content class="ion-padding">
@@ -8,23 +8,24 @@
       <app-base-item
         *ngFor="let item of list"
         [item]="item"
-        [compare]="service.myMap.get(item.issueDate.toDate() | date:'MM/yyyy')" 
+        [compare]="service.myMap.get(item.issueDate.toDate() | date:'MM/yyyy')"
         [values]="2"
         [cssName]="'green'"
-        (update)="onUpdate($event)"
-        (delete)="onDelete($event)"
+        [lastItem]="lastItem"
+        (update)="!lastItem && onUpdate($event)"
+        (delete)="!lastItem && onDelete($event)"
       ></app-base-item>
     </ng-container>
     <ng-template #noItems>
       <ion-item lines="none">{{ "no-list" | translate }}</ion-item>
     </ng-template>
   </ion-list>
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+  <ion-fab *ngIf="!lastItem" vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button routerLink="/gas/chart" routerDirection="forward">
       <ion-icon name="stats-chart"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab *ngIf="!lastItem" vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/gas/create" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

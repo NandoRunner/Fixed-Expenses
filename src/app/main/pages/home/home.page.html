@@ -2,3 +2,57 @@
 </app-base-header>
 
 <ion-content> Under building... </ion-content>
+
+<app-base-header
+  [title]="'gas.title'"
+  [isSave]="false"
+  [cssName]="'green'"
+  [logoutBtn]="false"
+>
+</app-base-header>
+
+<app-gas-list [lastItem]="true"></app-gas-list>
+
+<ion-content> Under building... </ion-content>
+
+<app-base-header
+  [title]="'power.title'"
+  [isSave]="false"
+  [cssName]="'orange'"
+  [logoutBtn]="false"
+>
+</app-base-header>
+
+<ion-content> Under building... </ion-content>
+
+<app-base-header
+  [title]="'water.title'"
+  [isSave]="false"
+  [cssName]="'blue'"
+  [logoutBtn]="false"
+>
+</app-base-header>
+
+<ion-content> Under building... </ion-content>
+
+<!--
+<ion-content class="ion-padding">
+  <ion-list *ngIf="list$ | async as list">
+    <app-base-item-header [cssName]="'green'"></app-base-item-header>
+    <ng-container *ngIf="list.length > 0; else noItems">
+      <app-base-item
+        *ngFor="let item of list"
+        [item]="item"
+        [compare]="service.myMap.get(item.issueDate.toDate() | date:'MM/yyyy')" 
+        [values]="2"
+        [cssName]="'green'"
+        (update)="onUpdate($event)"
+        (delete)="onDelete($event)"
+      ></app-base-item>
+    </ng-container>
+    <ng-template #noItems>
+      <ion-item lines="none">{{ "no-list" | translate }}</ion-item>
+    </ng-template>
+  </ion-list>
+</ion-content>
+-->

@@ -1,4 +1,4 @@
-import { OnInit, Directive, Injector, OnDestroy } from "@angular/core";
+import { OnInit, Directive, Injector, OnDestroy, Input } from "@angular/core";
 import { NavController } from "@ionic/angular";
 import { Observable, Subscription } from "rxjs";
 import { take } from "rxjs/operators";
@@ -20,6 +20,10 @@ export class BaseListPageDirective<T> implements OnInit, OnDestroy {
   navCtrl: NavController;
   overlayService: OverlayService;
 
+  @Input() lastItem: boolean = false;
+
+  //public lastItem: boolean = false;
+
   constructor(
     private injectorObj: Injector,
     public service: BaseService,
@@ -29,6 +33,7 @@ export class BaseListPageDirective<T> implements OnInit, OnDestroy {
     this.overlayService = this.injectorObj.get(OverlayService);
     this.title = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase();
     this.route = name;
+    this.service.lastItem = this.lastItem;
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -36,6 +41,7 @@ export class BaseListPageDirective<T> implements OnInit, OnDestroy {
 
   async ngOnInit(): Promise<void> {
     const loading = await this.overlayService.loading();
+
     this.list$ = this.service.getAll();
     this.subscription = this.list$
       .pipe(take(1))
